@@ -1,135 +1,8 @@
-# Homework #3
-
-# In all the exercises that follow, insert your code directly in this file
-# and immediately after each question.
-#
-# IMPORTANT NOTES: 
-#
-# 1) THIS IS A PROGRAMMING COURSE. :-) THIS MEANS THAT THE ANSWERS TO THESE QUESTIONS
-# ARE MEANT TO BE DONE IN CODE AS MUCH AS POSSIBLE. E.G., WHEN A QUESTION SAYS "COUNT
-# THE NUMBER OF TIMES THAT [...]" YOU SHOULD INTERPRET THIS AS "WRITE CODE THAT COUNTS
-# THE NUMBER OF TIMES THAT [...]". USE YOUR BEST JUDGMENT AND YOU WILL DO FINE. :-)
-#
-# 2) WHEN A QUESTION PROVIDES A VALUE FOR YOU TO USE IN COMPUTATIONS, FIRST STORE IT IN
-# A VARIABLE AND WRITE CODE THAT MAKES USE OF THAT VARIABLE.
-
-
-""" 
-
-Question 1
-
-Consider the following information:
-
-* A certain person is called Mary.
-* Her age is 22.
-* She lives in a city called Cranford.
-* Her state of residence is New Jersey.
-* Her Paypal balance is $75.8.
-
--   Store this information in 5 variables. Each variable should have an adequate name
-    and be of what is likely to be the best type for information of that kind.
--   Using the % operator, create a string called about_mary that combines all the information
-    available about her. As always, your code should make use of the variables defined above.
--   Print the variable about_mary.
-
+# -*- coding: utf-8 -*-
 """
+Created on Wed Jul 10 19:32:41 2019
 
-# Answer to Question 1
-name = "Mary"
-age = 22
-city = "Cranford"
-state = "New Jersey"
-balance = 75.8
-
-about_mary = "%s is %d years old, lives in %s, %s, and Paypal balance is $%.2f." % (name,age,city,state,balance) 
-print(about_mary)
-print("-------------------------------------------------------------------------------------------------------------")
-"""
-
-Question 2
-
-- Using .format(), create a string called about_mary that combines all the information
-  available about her. 
-- Print the variable about_mary.
-
-"""
-
-# Answer to Question 2
-about_mary = "{name} is {age} years old, lives in {city}, {state}, and Paypal balance is ${balance}".format(name = name,age = age,city = city, state = state, balance = f'{balance:.2f}') 
-print(about_mary)
-print("-------------------------------------------------------------------------------------------------------------")
-"""
-
-Question 3
-
-Below this question, I have defined a variable containing the whole
-text from an article in today's NYT. In the questions below, whenever
-we refer to "the article" we mean the exact contents of that variable
-(including the title and date lines). And obviously these tasks should
-be completed by coding! :-)
-
-3.1) Count the number of characters in this article, save it in a
-variable and print that out.
-
-3.2) Count the number of times the words "food" and "water" (both in
-lower-case) get used in the article. Store that information in two
-variables. Print out a line that shows the total number of times
-either 'food' or 'water' was mentioned:
-    
-   The article mentions 'food' or 'water' in lower-case a total of 5 times.
-
-3.3)  Do all the following steps in order:
-    
-    - Count the number of times the word "green" gets used in the article
-    and print it out. 
-    
-    - Then manually inspect the article and check whether your code
-    might be missing some instances due to the word being capitalized
-    in different ways in the article. You don't need to present any work
-    for this part of the question.
-
-    - Correct the code you wrote earlier so that it first stores a new
-    copy of the article entirely in lower-case characters -- *without
-    discarding/modifying the original article_text* -- and then
-    creates two variables: one variable containing the number of times
-    "green" was found in the original text and one variable containing
-    the number of times "green" was found in the lower-case version of
-    the article.
-    
-    - Print the following message to the user (using the two variables
-    you created earlier):
-        
-        The article initially seemed to only mentioned the word
-	'green' 1 times, but I know that computers think upper- and
-	lower-case characters are totally different animals so I
-	rewrote my code, making the article text lower-case before
-	running this search. Then it reported the correct value:
-	'green' is mentioned a total of 8 times in the article.
-    
-    Note: please do not worry about your code getting the
-    singular/plural in 'times' correct in the string above. (We will
-    see how to do that soon.)
-
-
-3.4) Print the article text to the user, replacing all instances of
-"green" (in any capitalization) with "red". (Note: it is fine to print
-the whole article in lower-case, although there are alternative ways
-that allow you to preserve the capitalization and that you are welcome
-to explore.)
-
-3.5) Using the splicing operator [], create a new variable called
-first_paragraph that contains the first paragraph of article and then
-print it:
-
-  Everyone is lining up to endorse the Green New Deal — or to mock it.
-  Kamala Harris, Cory Booker, Bernie Sanders, Elizabeth Warren and
-  Kirsten Gillibrand have all endorsed the resolution sponsored by
-  Representative Alexandria Ocasio-Cortez of New York and Senator Edward
-  Markey of Massachusetts.
-
-Note: you can obtain the indices for use with the splicing operator []
-in any way you wish.
-
+@author: admin
 """
 
 article_text = """
@@ -263,35 +136,18 @@ visionary environmental lawmaking. Like much new radicalism, the Green
 New Deal is good sense rediscovered.
 
 """
-
-# Answer to Question 3.1
 wordCount = len(article_text)
-print("Total word count is:",wordCount,sep=' ')
-print("-------------------------------------------------------------------------------------------------------------")
-# Answer to Question 3.2
-#The article mentions 'food' or 'water' in lower-case a total of 5 times.
-foodCount = article_text.count("food")
-waterCount = article_text.count("water")
-print("he article mentions 'food' or 'water' in lower-case a total of {number} times.".format(number = foodCount + waterCount))
-print("-------------------------------------------------------------------------------------------------------------")
-# Answer to Question 3.3
-greenCount1 = article_text.count("green")
-
-greenCount2 = article_text.lower().count("green")
-
-def times(number):
-    if number == 1:
-        string = "time"
+print(wordCount)
+def checkGreen(string):
+    if string.lower() == "green":
+        return True
     else:
-        string = "times"
-    return string
-
-
-string = "The article initially seemed to only mentioned the word \n 'green' {count1} {time1}, but I know that computers think upper- and\n lower-case characters are totally different animals so I \n rewrote my code, making the article text lower-case before \n running this search. Then it reported the correct value:\n 'green' is mentioned a total of {count2} {time2} in the article.".format(count1 = greenCount1,time1 = times(greenCount1),count2 = greenCount2,time2 = times(greenCount2))
-print(string)
-print("-------------------------------------------------------------------------------------------------------------")
-# Answer to Question 3.4
-print(article_text.lower().replace('green','red'))
-print("-------------------------------------------------------------------------------------------------------------")
-# Answer to Question 3.5
-print(article_text[86:380])
+        return False
+    
+for i in range(1,wordCount-5):
+    string = article_text[i:i+5]
+    check = checkGreen(string)
+    if check == True:
+        article_text = article_text[:i] + "red" + article_text[i+5:]
+        
+print(article_text)
