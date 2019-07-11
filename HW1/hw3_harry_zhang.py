@@ -294,4 +294,5 @@ print("-------------------------------------------------------------------------
 print(article_text.lower().replace('green','red'))
 print("-------------------------------------------------------------------------------------------------------------")
 # Answer to Question 3.5
-print(article_text[86:380])
+first_paragraph = article_text.split("\n\n")[2]
+print(first_paragraph)
