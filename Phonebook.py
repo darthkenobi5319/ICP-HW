@@ -5,7 +5,7 @@ Created on Mon Jul 22 15:39:02 2019
 @author: Harry Zhang
 """
 phonebook = dict()
-
+cont = True
 # @param:   contactName: A String specifying the contact name
 #           contactNumber: A number
 # @return:  returns no value.    
@@ -99,10 +99,12 @@ def displayBook():
     orderedKeys = list(phonebook.keys())
     orderedKeys.sort()
     for i in orderedKeys:
-        print("Contact:",i,"Numbers",phonebook[i],sep = ' ')
+        print("Contact:",i,"|","Numbers:",phonebook[i],sep = ' ')
     return
 
-while True:
+
+while cont == True:
+    print("------------------------------------")
     print("What do you want to do?")
     print("1).Add a contact")
     print("2).Update a contact")
@@ -116,10 +118,11 @@ while True:
     if command == '1':
         contactName = input("Please Enter user name:")
         contactNumbers = []
-        while True:
+        temp = True
+        while temp:
             contactNumbers.append(input("Please input a phone number:"))
-            if (input("Add another number?(Y/N)").upper != "Y"):
-                break
+            if (input("Add another number?(Y/N)").upper() != "Y"):
+                temp = False
         addContact(contactName,contactNumbers)
         continue
     
@@ -140,6 +143,7 @@ while True:
         displayBook()
         continue
     elif command == '6':
+        cont = False
         break
     else:
         print("Invalid input.")
