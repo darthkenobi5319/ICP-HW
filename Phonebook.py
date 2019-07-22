@@ -97,6 +97,9 @@ def findContact(contactName):
 # @return:  returns no value. 
 def displayBook():
     orderedKeys = list(phonebook.keys())
+    if len(orderedKeys) == 0:
+        print("The phonebook is empty!")
+        return
     orderedKeys.sort()
     for i in orderedKeys:
         print("Contact:",i,"|","Numbers:",phonebook[i],sep = ' ')
