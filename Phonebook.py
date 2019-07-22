@@ -6,6 +6,8 @@ Created on Mon Jul 22 15:39:02 2019
 """
 phonebook = dict()
 cont = True
+
+# This function adds a contact with one name a one number
 # @param:   contactName: A String specifying the contact name
 #           contactNumber: A number
 # @return:  returns no value.    
@@ -16,6 +18,7 @@ def addContact(contactName,contactNumber):
         print("User already exists")
     return
 
+# This fuction allows the user to change the phone number (add,delete,change)  
 # @param:   none
 # @return:  returns no value.
 def updateContact():
@@ -40,6 +43,7 @@ def updateContact():
         print("Invalid input:")
     return
     
+# This function add a number to a given user
 # @param:   contactName: A String specifying the contact name
 #           contactNumber: A number
 # @return:  returns no value.   
@@ -51,6 +55,8 @@ def addNumber(contactName,contactNumber):
         print("User not found.")
     return
 
+# This function deletes a number to a given user
+# if there is only one number, the deletion of that would delete the contact entirely      
 # @param:   contactName: A String specifying the contact name
 #           contactNumber: A number
 # @return:  returns no value.     
@@ -64,6 +70,7 @@ def deleteNumber(contactName,contactNumber):
         print("User not found.")
     return
 
+# This function changes a number to a given user
 # @param:   contactName: A String specifying the contact name
 #           contactNumber1: A number to change
 #           contactNumber2: A number to change into
@@ -75,7 +82,8 @@ def changeNumber(contactName,contactNumber1,contactNumber2):
     else:
         print("User not found.")
     return
-    
+
+# This function deletes a contact by name, along with all the numbers.    
 # @param:   contactName: A String specifying the contact name
 # @return:  returns no value. 
 def deleteContact(contactName):
@@ -85,14 +93,18 @@ def deleteContact(contactName):
         print("User not found.")
     return
 
+# This functions finds all the numbers by a given contact name
 # @param:   contactName: A String specifying the contact name
 # @return:  returns the numbers or send an error message. 
 def findContact(contactName):
     if contactName in phonebook.keys():
+        phonebook[contactName].sort()
         return phonebook[contactName]
     else:
         return "User not found."
-    
+
+# This function displays the entire book.
+# Ordered by the names of contacts. 
 # @param:   none
 # @return:  returns no value. 
 def displayBook():
@@ -102,6 +114,7 @@ def displayBook():
         return
     orderedKeys.sort()
     for i in orderedKeys:
+        phonebook[i].sort()
         print("Contact:",i,"|","Numbers:",phonebook[i],sep = ' ')
     return
 
