@@ -25,6 +25,7 @@ def updateContact():
     print("1).Add number")
     print("2).Delete number")
     print("3).Change number")
+    print("4).Change contact name")
     updateType = input("How would you like to update your information?:")
     if updateType == "1":
         contactName = input("Enter the contact name: ")
@@ -39,6 +40,10 @@ def updateContact():
         contactNumber1 = input("Enter the contact number you want to change: ")
         contactNumber2 = input("Enter the contact number you want to change into: ")
         changeNumber(contactName,contactNumber1,contactNumber2)
+    elif updateType == "4":
+        contactName1 = input("Enter the contact name you want to change: ")
+        contactName2 = input("Enter the contact name you want to change into: ")
+        changeName(contactName1,contactName2)
     else:
         print("Invalid input:")
     return
@@ -82,6 +87,27 @@ def changeNumber(contactName,contactNumber1,contactNumber2):
     else:
         print("User not found.")
     return
+
+
+
+
+# This function changes a name to a given user
+# @param:
+#           contactName1: A Name to change
+#           contactName2: A Name to change into
+# @return:  returns no value.     
+def changeName(contactName1,contactName2):    
+    if contactName1 in phonebook.keys():
+        if contactName2 in phonebook.keys():
+            phonebook[contactName2].extend(phonebook[contactName1])
+            del phonebook[contactName1]
+        else:
+            phonebook[contactName2] = phonebook[contactName1]
+    else:
+        print("User not found.")
+    return
+
+
 
 # This function deletes a contact by name, along with all the numbers.    
 # @param:   contactName: A String specifying the contact name
