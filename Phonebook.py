@@ -2,7 +2,7 @@
 """
 Created on Mon Jul 22 15:39:02 2019
 
-@author: Harry Zhang
+@author: Harry Zhenghan Zhang
 """
 phonebook = dict()
 cont = True
