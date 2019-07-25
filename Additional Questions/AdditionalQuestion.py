@@ -154,7 +154,6 @@ while True:
     
     elif command == '3':
         displayNews()
-        news = dict()
         continue
     
     elif command == '4': 
