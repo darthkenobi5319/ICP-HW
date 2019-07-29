@@ -50,6 +50,9 @@ def urlParse(url):
 def getNews(page):
     hasNextPage = True
     r = requests.get(page)
+    if r.status_code != 200:
+        print("Page not found!")
+        return None
     html = r.text
     soup = bs4.BeautifulSoup(html,'html.parser')
     newsTemp = soup.find_all("h2",class_ = "title")
@@ -70,6 +73,9 @@ def displayNews():
     cont = True
     index = 0
     indexTitle = dict()
+    if len(news) == 0:
+        print("News board is empty!")
+        return
     for i in news.keys():
         index += 1
         print(index,"). ",i)
@@ -82,7 +88,7 @@ def displayNews():
                 cont = False
             else: 
                 print("Invalid entry.")
-
+    return
 
 # This function iterates over several pages, gathering all news displayed.
 # @param:   maximumPage: upper bound of the pages to check
@@ -98,18 +104,25 @@ def iterate(maximumPage,minimumPage = 1):
     for i in range(minimumPage - 1,maximumPage):
         if i == 0:
             result = getNews("https://www.stern.nyu.edu/experience-stern/news-events")
+            if result == None:
+                return
             hasNextPage = result[2]
             nextUrl = result[3]
         elif i == minimumPage - 1:
-            result = getNews("https://www.stern.nyu.edu/experience-stern/news-events?page={number}".format(number = minimumPage))
+            result = getNews("https://www.stern.nyu.edu/experience-stern/news-events?page={number}".format(number = i))
+            if result == None:
+                return
             hasNextPage = result[2]
             nextUrl = result[3]
         elif hasNextPage:
             result = getNews(nextUrl)
+            if result == None:
+                return
             hasNextPage = result[2]
             nextUrl = result[3]
         else :
             print("This is the last page!")
+            return
             
             
             
@@ -158,7 +171,7 @@ while True:
     
     elif command == '4': 
         news = dict()
-        
+        continue
     elif command == '5': 
         sys.exit(1)
     else:
