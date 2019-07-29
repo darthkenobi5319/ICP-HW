@@ -16,13 +16,13 @@ def search():
     return string
 
 
-def recordPrice(items,search):
+def recordPrice(items):
     for i in items:
         nearby = i.find("span",class_ = "nearby")
-        title = i.parent.find("a",class_ = "result-title hdrlnk" ).text
-        if search.upper() in title.upper(): 
-            if nearby == None:
-                prices.append(int(i.find("span",class_="result-price").text.strip("$")))
+        if nearby == None:
+            price = int(i.find("span",class_="result-price").text.strip("$"))
+            if price != 0:
+                prices.append(price)
             
             
             
@@ -54,17 +54,29 @@ def searchPage(url):
     items = soup.find_all("span",class_ = "result-meta")
     return items,soup
 
-
+def setPriceRange(lower,upper):
+    newPrice = list()
+    for i in prices:
+        if i >= lower and i <= upper:
+            newPrice.append(i)
+    return newPrice
 
 searchString = search()
 url = "https://newyork.craigslist.org/search/sss"
 search_params = {"query": searchString,
-                     "sort": "rel"}
+                 "sort": "rel",
+                 "srchType":"T"}
 prices = []
 
 while url != None:
     items = searchPage(url)[0]
     url = iterate(searchPage(url)[1])
-recordPrice(items,searchString)
+    recordPrice(items)
+
+    
+print("To eliminate Outliers, please enter the lower and upper bound:")    
+lower = int(input("Lower Bound:"))
+upper = int(input("Upper Bound:"))
+prices = setPriceRange(lower,upper)
 calculateAverage()
 displayPrices()
