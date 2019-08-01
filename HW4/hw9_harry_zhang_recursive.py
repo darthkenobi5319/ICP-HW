@@ -252,36 +252,42 @@ seeShipNames()
 
 
 # Answer to Question 2.2
-# This function gets the fastest ship in the database
-# @param:
-# @return: list of the name of the fastest ship 
-def get_fastest_ship():
-    starships = get_starships()
-    keys = list(starships.keys())
-    i = 0
-    while True:
-        try:
-            int(starships[keys[i]]['MGLT'])
-            fastest = [keys[i]]
-            break
-        except:
-            continue        
-    for i in starships.keys():
-        current = int(starships[fastest[0]]['MGLT'])
-        try:
-            target = int(starships[i]['MGLT'])
-        except ValueError:
-            target = 0
-        if current < target:
-            #print(fastest,current,i,target)
-            fastest = [i]
-        elif current == target:
-            fastest.append(i)
-        else:
-            continue
-    return fastest
 
-fastest = get_fastest_ship()
+
+# This function gets the dictionary of all speeds and their corresponding names
+# @param:
+# @return: dictionary of all speeds and their corresponding starship names
+def getShipBySpeed():
+    starships = get_starships()
+    starships_by_speed = dict()
+    for i in starships.keys():
+        speed = starships[i]['MGLT']
+        try:
+            speed = int(speed)
+        except:
+            continue
+        if speed not in starships_by_speed.keys():
+            starships_by_speed[speed] = [i]
+        else:
+            starships_by_speed[speed].append(i)
+    return starships_by_speed
+
+
+def recursiveFindFastest(listOfSpeed):
+    if len(listOfSpeed) == 1:
+        return listOfSpeed[0]
+    else:
+        halfLength = int(len(listOfSpeed)/2)
+        lower = recursiveFindFastest(listOfSpeed[:halfLength])
+        upper = recursiveFindFastest(listOfSpeed[halfLength:])
+        if lower < upper:
+            return upper
+        else:
+            return lower
+
+
+speed = getShipBySpeed()
+fastest = speed[recursiveFindFastest(list(speed.keys()))]
 fastestString = ''
 for i in fastest:
     fastestString += i
