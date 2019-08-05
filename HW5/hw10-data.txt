@@ -1,0 +1,4 @@
+Mary	54	New York, NY
+Sergio	28	Cranford, NJ
+Natalia	32	Portland, ME
+Tisha	64	Davis, CA

@@ -243,6 +243,7 @@ def get_starships():
     return starships
 
 
+print(get_starships())
 # This function shows the starship information
 # @param:
 # @return:
