@@ -1,0 +1,37 @@
+Executor,279144,19000
+Sentinel-class landing craft,5,38
+Death Star,342953,120000
+Millennium Falcon,4,34.37
+Y-wing,2,14
+X-wing,1,12.5
+TIE Advanced x1,1,9.2
+Slave 1,1,21.5
+Imperial shuttle,6,20
+EF76 Nebulon-B escort frigate,854,300
+Calamari Cruiser,5400,1200
+A-wing,1,9.6
+B-wing,1,16.9
+Republic Cruiser,9,115
+Naboo fighter,1,11
+Naboo Royal Starship,8,76
+Scimitar,1,26.5
+J-type diplomatic barge,5,39
+AA-9 Coruscant freighter,NA,390
+Jedi starfighter,1,8
+H-type Nubian yacht,4,47.9
+Star Destroyer,47060,1,600
+Trade Federation cruiser,600,1088
+Theta-class T-2c shuttle,5,18.5
+T-70 X-wing fighter,1,NA
+Rebel transport,6,90
+Droid control ship,175,3170
+Republic Assault ship,700,752
+Solar Sailer,3,15.2
+Republic attack cruiser,7400,1137
+Naboo star skiff,3,29.2
+Jedi Interceptor,1,5.47
+arc-170,3,14.5
+Belbullab-22 starfighter,1,6.71
+V-wing,1,7.9
+CR90 corvette,165,150
+Banking clan frigate,200,825
