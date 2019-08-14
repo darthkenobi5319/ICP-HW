@@ -143,7 +143,10 @@ class phoneBook:
         result = ''
         for i in orderedKeys:
             self.phonebook[i].sort()
-            result += ("Contact: " + i + " | Numbers: " + self.phonebook[i] + '\n')
+            subresult = ''
+            for j in self.phonebook[i]:
+                subresult += str(j) 
+            result += ("Contact: " + i + " | Numbers: " + subresult + '\n')
         return result
 
 if __name__ == "__main__":

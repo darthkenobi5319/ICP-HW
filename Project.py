@@ -7,6 +7,7 @@ Created on Tue Aug 13 23:15:27 2019
 import numpy as np
 import pandas as pd 
 import h5py
+import os
 from sklearn.model_selection import train_test_split
 from keras.layers import Dense,Dropout
 from keras.models import Sequential
@@ -121,7 +122,7 @@ def getAverage():
 # @param:  
 # @return: 
 def getTeamNames():
-    fp = open('C:/Users/admin/Documents/JupyterNotebook/ICP/Project/mens-machine-learning-competition-2019/Stage2DataFiles/teamNames.txt','w')
+    fp = open(os.getcwd() + '/Stage2DataFiles/teamNames.txt','w')
     iterable = list(df_average.index)
     for i in iterable:
         print(i,file = fp)
@@ -143,7 +144,7 @@ def getInput(Team1,Team2):
 # @param:  
 # @return: 
 def userInterface():
-    path = 'C:/Users/admin/Documents/JupyterNotebook/ICP/Project/mens-machine-learning-competition-2019/Stage2DataFiles/Model.h5'
+    path = os.getcwd() + '/Stage2DataFiles/Model.h5'
 
     try:
         model = load_model(path)
@@ -175,7 +176,7 @@ def userInterface():
 
 if __name__ == '__main__':
     # Data Handling--Global Variables
-    data_dir = 'C:/Users/admin/Documents/JupyterNotebook/ICP/Project/mens-machine-learning-competition-2019/Stage2DataFiles/'
+    data_dir = os.getcwd() + '/Stage2DataFiles/'
     df_tour = pd.read_csv(data_dir + '/NCAATourneyDetailedResults.csv')
     df_reg_season = pd.read_csv(data_dir + "/RegularSeasonDetailedResults.csv")
     df_teams = pd.read_csv(data_dir + "/Teams.csv")
@@ -189,7 +190,7 @@ if __name__ == '__main__':
     
 # =============================================================================
 # =============================================================================
-    getTeamNames()
+#   getTeamNames()
     userInterface()
     
     
